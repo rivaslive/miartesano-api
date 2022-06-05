@@ -1,8 +1,8 @@
-import studentModule from './student';
+import authModule from './auth';
 
 const modules = {
-  typeDefs: [studentModule.typeDefs],
-  resolvers: [studentModule.resolvers],
+  typeDefs: [authModule.typeDefs],
+  resolvers: [authModule.resolvers],
 };
 
 export default modules;

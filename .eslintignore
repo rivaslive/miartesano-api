@@ -1,6 +1,3 @@
 node_modules
 yarn.lock
 package-lock.json
-.eslintrc.js
-prettier.config.js
-vite.config.js

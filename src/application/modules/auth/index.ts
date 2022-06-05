@@ -1,9 +1,9 @@
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
 
-const StudentModule = {
+const AuthModule = {
   typeDefs,
   resolvers,
 };
 
-export default StudentModule;
+export default AuthModule;

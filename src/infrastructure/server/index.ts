@@ -6,12 +6,13 @@ import {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from 'apollo-server-core';
 
-import modules from '../../application/modules';
-import models from '../../domain/models';
-import getConfig from '../config';
+import models from '@domain/models';
+import modules from '@application/modules';
+import config from '@infrastructure/config';
+
 import { initializeDB } from './db';
 
-const { port } = getConfig;
+const { port } = config;
 
 // creating server
 const initializeServer = async () => {
@@ -19,7 +20,7 @@ const initializeServer = async () => {
   await initializeDB();
 
   // create express app
-  const app = express();
+  let app = express();
 
   // create server HTTP
   const httpServer = http.createServer(app);
@@ -51,7 +52,7 @@ const initializeServer = async () => {
   httpServer.listen({ port }, () => {
     // eslint-disable-next-line no-console
     console.log(
-      `🚀 Server ready at http://localhost:4000${server.graphqlPath}`
+      `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
     );
   });
 };

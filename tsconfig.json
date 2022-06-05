@@ -1,0 +1,60 @@
+{
+  "ts-node": {
+    "files": true
+  },
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./@types"
+    ],
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "incremental": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@application/*": [
+        "application/*"
+      ],
+      "@domain/*": [
+        "domain/*"
+      ],
+      "@infrastructure/*": [
+        "infrastructure/*"
+      ]
+    }
+  },
+  "include": [
+    "./src",
+    "./@types"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/node_modules/*",
+    ".eslintrc"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".d.ts",
+          ".ts",
+          ".tsx"
+        ],
+        "moduleDirectory": [
+          "node_modules",
+          "src"
+        ]
+      }
+    }
+  }
+}

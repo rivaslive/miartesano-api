@@ -1,5 +1,5 @@
 {
   "verbose": true,
   "ignore": [],
-  "ext": "js,json,md"
+  "ext": "js,json,md,ts,tsx"
 }

@@ -1,6 +1,6 @@
 <h1 align="center">
   <a href="https://dummyimage.com/200x200/000/fff">
-    uDocent Graphql API
+    Mi Artesano Graphql API
   </a>
 </h1>
 
