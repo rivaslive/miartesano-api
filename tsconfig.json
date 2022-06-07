@@ -23,8 +23,14 @@
       "@application/*": [
         "application/*"
       ],
+      "@shared/*": [
+        "shared/*"
+      ],
       "@domain/*": [
         "domain/*"
+      ],
+      "@modules/*": [
+        "modules/*"
       ],
       "@infrastructure/*": [
         "infrastructure/*"
