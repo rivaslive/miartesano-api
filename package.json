@@ -19,14 +19,17 @@
     "apollo-server": "^3.6.2",
     "apollo-server-core": "^3.6.2",
     "apollo-server-express": "^3.6.2",
+    "bcrypt": "^5.0.1",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "graphql": "^16.2.0",
     "graphql-tag": "^2.12.6",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.7",
     "ts-node": "^10.8.0"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.36",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
