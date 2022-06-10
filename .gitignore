@@ -43,4 +43,6 @@ _.env
 .idea
 yarn.lock
 
+dist
+
 package-lock.json

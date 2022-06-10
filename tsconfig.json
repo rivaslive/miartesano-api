@@ -5,15 +5,17 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "nodenext",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "outDir": "./dist",
     "typeRoots": [
       "./node_modules/@types",
       "./@types"
     ],
     "allowJs": true,
-    "noEmit": true,
     "strict": true,
+    "sourceMap": true,
     "incremental": true,
+    "declaration": true,
     "baseUrl": "./src",
     "paths": {
       "@application/*": [
@@ -33,14 +35,11 @@
       ]
     }
   },
-  "include": [
-    "./src",
-    "./@types"
-  ],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": [
+    "dist",
     "node_modules",
-    "**/node_modules/*",
-    ".eslintrc"
+    "**/node_modules/*"
   ],
   "settings": {
     "import/resolver": {
