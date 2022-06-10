@@ -2,9 +2,9 @@ import { Schema, model } from 'mongoose';
 
 import { getFullDate } from '@shared/utils/date';
 import getModelName from '@shared/utils/getModelName';
-import ImageSchema from '@shared/graphql/schemas/image';
-import { UserDBType } from '@modules/users/domain/entities';
-import { pluralName as pluralLocationName } from '@modules/location/domain/models';
+import { pluralName as locationNameModel } from '@modules/location/domain/models';
+import { pluralName as fileNameModel } from '@modules/file/domain/models';
+import { UserDBType } from '../entities';
 
 const { pluralName } = getModelName('user');
 
@@ -29,10 +29,11 @@ const schema = new Schema<UserDBType>(
     },
     addresses: {
       type: [Schema.Types.ObjectId],
-      ref: pluralLocationName,
+      ref: locationNameModel,
     },
     avatar: {
-      type: ImageSchema,
+      type: Schema.Types.ObjectId,
+      ref: fileNameModel,
     },
     password: {
       type: String,
@@ -66,5 +67,7 @@ schema.set('toJSON', {
     delete doc.password;
   },
 });
+
+export { pluralName, UserDBType };
 
 export default model<UserDBType>(pluralName, schema);

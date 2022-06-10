@@ -1,8 +1,8 @@
 import { Schema, model } from 'mongoose';
-import getModelName from '@shared/utils/getModelName';
 import { getFullDate } from '@shared/utils/date';
-import ImageSchema from '@shared/graphql/schemas/image';
-import {CategoryDBType} from '@modules/category/domain/entities';
+import getModelName from '@shared/utils/getModelName';
+import { pluralName as imageNameModel } from '@modules/file/domain/models';
+import { CategoryDBType } from '../entities';
 
 const { pluralName } = getModelName('category');
 
@@ -11,13 +11,15 @@ const categoryModel = new Schema<CategoryDBType>(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     image: {
-      type: ImageSchema,
+      type: Schema.Types.ObjectId,
+      ref: imageNameModel,
     },
     status: {
       type: String,
-      enum: ['active', 'inactive', 'deleted'],
+      enum: ['active', 'inactive'],
       default: 'active',
     },
     createdAt: {

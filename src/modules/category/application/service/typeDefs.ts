@@ -1,22 +1,10 @@
 import { gql } from 'graphql-tag';
-import {
-  IMAGE_TYPE,
-  STATUS_ENUM_TYPE,
-} from '@shared/graphql/types';
+import { IMAGE_TYPE, STATUS_ENUM_TYPE } from '@shared/graphql/types';
 
-const auth = gql`
-  scalar Upload
-
+const types = gql`
   type Query {
     category(id: ID!): Category!
     categories: [Category]!
-  }
-
-  type Category {
-    id: ID!
-    name: String!
-    image: ImageType
-    status: StatusType!
   }
 
   type Mutation {
@@ -27,16 +15,23 @@ const auth = gql`
 
   input CategoryInput {
     name: String!
-    image: Upload
+    image: ID!
   }
 
   input UpdateCategoryInput {
     name: String
-    image: Upload
+    image: ID
+  }
+
+  type Category {
+    id: ID!
+    name: String!
+    image: ImageType
+    status: StatusType!
   }
 
   ${STATUS_ENUM_TYPE}
   ${IMAGE_TYPE}
 `;
 
-export default auth;
+export default types;

@@ -4,19 +4,15 @@
   },
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
-    "sourceMap": true,
+    "module": "nodenext",
     "outDir": "./dist",
     "typeRoots": [
       "./node_modules/@types",
       "./@types"
     ],
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "noEmit": true,
+    "strict": true,
     "incremental": true,
     "baseUrl": "./src",
     "paths": {

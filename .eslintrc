@@ -50,7 +50,8 @@
     "no-console": "off",
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "@typescript-eslint/return-await": "off"
   },
   "overrides": [
     {
