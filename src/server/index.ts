@@ -1,16 +1,22 @@
 import http from 'http';
-import express from 'express';
+import express, { Request } from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import {
   ApolloServerPluginDrainHttpServer,
   ApolloServerPluginLandingPageGraphQLPlayground,
 } from 'apollo-server-core';
-
 import config from 'config';
-import { initializeDB } from 'config/db';
-import {Context} from 'apollo-server-core/dist/types';
 
-const { port } = config;
+import { initializeDB } from 'config/db';
+import security from '@shared/utils/auth';
+
+// @ts-ignore
+import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.js';
+// @ts-ignore
+import GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
+import routes from './routes';
+
+const { port, publicPath, uploadPath, isProd } = config;
 
 type ModulesType = {
   typeDefs: any[];
@@ -31,14 +37,31 @@ const initializeServer = async <T>({
   // create express app
   const app = express();
 
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.static(publicPath));
+  app.use('/public', express.static(uploadPath));
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
+
+  // set routes for view image
+  app.use(routes);
+
   // create server HTTP
   const httpServer = http.createServer(app);
 
   // creating Apollo server
   const server = new ApolloServer<T>({
-    context: context as unknown as Context,
+    csrfPrevention: isProd,
+    context: async ({ req }: { req: Request }) => {
+      const user = await security.getUser(req.headers.authorization || '');
+      return { ...context, user };
+    },
     typeDefs: modules.typeDefs,
-    resolvers: modules.resolvers,
+    resolvers: [
+      {
+        Upload: GraphQLUpload,
+      },
+      ...modules.resolvers,
+    ],
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
       ApolloServerPluginLandingPageGraphQLPlayground({}),

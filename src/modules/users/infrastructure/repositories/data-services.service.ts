@@ -1,5 +1,5 @@
-import UserModel from '@modules/users/domain/models';
-import type{ UserDBType } from '@modules/users/domain/entities';
+import UserModel from '../../domain/models';
+import type{ UserDBType } from '../../domain/entities';
 import { UserRepository } from './data-services.repository';
 
 const userServiceRepository = new UserRepository<UserDBType>(UserModel, ['addresses']);

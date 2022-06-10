@@ -1,9 +1,9 @@
 import { Model } from 'mongoose';
 
-export class UserRepository<T> {
+export class DataRepository<T> {
   private _repository: Model<T>;
 
-  private _populateOnFind: string[];
+  private readonly _populateOnFind: string[];
 
   constructor(repository: Model<T>, populateOnFind: string[] = []) {
     this._repository = repository;

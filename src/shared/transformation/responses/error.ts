@@ -5,7 +5,7 @@ const { Error } = mongoose;
 
 const { ValidationError } = Error;
 
-export const error = (err: Error) => {
+export const error = (err: Error | any) => {
   if (err instanceof ValidationError) {
     return new UserInputError(err.message, {
       invalidArgs: Object.keys(err.errors),

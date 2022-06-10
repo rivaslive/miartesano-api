@@ -26,7 +26,8 @@ const create = async (
 };
 
 // eslint-disable-next-line
-const verify = async (jwt: string) => {
+const verify = async (jwt: string | null) => {
+  if (!jwt) return null;
   try {
     return Jwt.verify(jwt, jwtKey);
   } catch (e) {
@@ -35,9 +36,23 @@ const verify = async (jwt: string) => {
   }
 };
 
+const getTokenFromHeaders = (authorization: string) => {
+  const tokenInArr = authorization.split('Bearer ');
+  if (tokenInArr.length > 1) return tokenInArr[1];
+  return null;
+};
+
+const getUser = async (authorization?: string) => {
+  if (!authorization) return null;
+  const token = getTokenFromHeaders(authorization);
+  return verify(token);
+};
+
 const security = {
   create,
   verify,
+  getUser,
+  getTokenFromHeaders,
 };
 
 export default security;

@@ -1,12 +1,12 @@
 import type { IResolvers } from '@graphql-tools/utils';
 
-import { response } from '@shared/transformation';
 import { GraphqlContext } from 'App.context';
+import { response } from '@shared/transformation';
 
 const Query: IResolvers<any, GraphqlContext> = {
   categories: async (_root, _args, context) => {
     try {
-      return await context.Category.find({});
+      return await context.Category.find();
     } catch (error) {
       return response.error(error);
     }

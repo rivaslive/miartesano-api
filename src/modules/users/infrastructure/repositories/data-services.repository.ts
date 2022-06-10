@@ -10,6 +10,10 @@ export class UserRepository<T> {
     this._populateOnFind = populateOnFind;
   }
 
+  findById(id: ID) {
+    return this._repository.findById(id).populate(this._populateOnFind);
+  }
+
   findOne(filter: Partial<T>) {
     return this._repository.findOne(filter).populate(this._populateOnFind);
   }

@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "nodenext",
     "target": "esnext",
     "baseUrl": "./src",
+    "noEmit": true,
+    "strict": true,
     "paths": {
       "@application/*": [
         "application/*"

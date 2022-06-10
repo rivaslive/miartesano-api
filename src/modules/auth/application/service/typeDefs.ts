@@ -1,7 +1,7 @@
 import { gql } from 'graphql-tag';
 import { IMAGE_TYPE, STATUS_ENUM_TYPE } from '@shared/graphql/types';
 
-const auth = gql`
+const types = gql`
   type Query {
     Profile(id: ID!): User!
   }
@@ -58,4 +58,4 @@ const auth = gql`
   ${IMAGE_TYPE}
 `;
 
-export default auth;
+export default types;
