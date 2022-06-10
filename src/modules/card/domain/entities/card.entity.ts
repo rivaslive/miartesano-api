@@ -9,7 +9,7 @@ export type CardDBType = {
   firstName: string;
   cardNumber: string;
   originalCardNumber: string;
-  user: ID,
+  user: any,
   status?: Status;
   createdAt?: Date;
 };

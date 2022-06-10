@@ -3,7 +3,6 @@ import { getFullDate } from '@shared/utils/date';
 import getModelName from '@shared/utils/getModelName';
 import { pluralName as userNameModal } from '@modules/users/domain/models';
 import { CardDBType, status } from '../entities';
-import {getUrl} from '@modules/file/application/shared/file';
 
 const { pluralName } = getModelName('card');
 

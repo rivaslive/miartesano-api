@@ -18,12 +18,12 @@ export const status: Status[] = [
 export type ItemSchemaDBType = {
   subTotal: number;
   quantity: number;
-  product: ID;
+  product: any;
   createdAt?: Date;
 };
 
 export type SaleDBType = {
-  user: ID;
+  user: any;
   discount?: number;
   subTotal?: number;
   total?: number;
