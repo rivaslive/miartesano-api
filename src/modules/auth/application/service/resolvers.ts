@@ -71,6 +71,10 @@ const Mutation: IResolvers<any, GraphqlContext> = {
       await user.save();
 
       return {
+        id: user.id,
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        avatar: user.avatar,
         jwt,
       };
     } catch (error) {
