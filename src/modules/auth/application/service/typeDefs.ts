@@ -6,18 +6,6 @@ const types = gql`
     Profile(id: ID!): User!
   }
 
-  type User {
-    id: ID!
-    firstName: String!
-    lastName: String!
-    email: String!
-    phone: String!
-    avatar: ImageType!
-    status: StatusType!
-    createdAt: String!
-    addresses: [LocationType]
-  }
-
   type LocationType {
     address: String!
     state: String!
@@ -34,7 +22,23 @@ const types = gql`
   }
 
   type AuthResponse {
+    id: ID!
+    name: String!
+    email: String!
+    avatar: ImageType
     jwt: String!
+  }
+
+  type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String!
+    avatar: ImageType!
+    status: StatusType!
+    createdAt: String!
+    addresses: [LocationType]
   }
 
   input UserInput {

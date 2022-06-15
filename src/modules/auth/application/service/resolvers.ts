@@ -1,7 +1,7 @@
 import { Error } from 'mongoose';
 import type { IResolvers } from '@graphql-tools/utils';
 
-import {GraphqlContext} from 'App.context';
+import { GraphqlContext } from 'App.context';
 import security from '@shared/utils/auth';
 import encrypt from '@shared/utils/encrypt';
 import { response } from '@shared/transformation';
@@ -37,6 +37,10 @@ const Mutation: IResolvers<any, GraphqlContext> = {
         const verifyToken = await security.verify(user.jwt);
         if (verifyToken) {
           return {
+            id: user.id,
+            name: `${user.firstName} ${user.lastName}`,
+            email: user.email,
+            avatar: user.avatar,
             jwt: user.jwt,
           };
         }
@@ -47,6 +51,10 @@ const Mutation: IResolvers<any, GraphqlContext> = {
       await user.save();
 
       return {
+        id: user.id,
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        avatar: user.avatar,
         jwt,
       };
     } catch (error) {
