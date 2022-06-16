@@ -1,9 +1,9 @@
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
 
-const ProductModule = {
+const HomeModule = {
   typeDefs,
   resolvers,
 };
 
-export default ProductModule;
+export default HomeModule;

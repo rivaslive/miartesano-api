@@ -5,7 +5,7 @@ export type ImageDBType = {
   url: string;
   originalName?: string;
   placeholder?: string;
-  status: StatusType;
+  status?: StatusType;
   createdAt?: Date;
 };
 

@@ -10,8 +10,14 @@ export class ProductRepository<T> {
     this._populateOnFind = populateOnFind;
   }
 
-  async find(filter?: any) {
-    const data: any = await this._repository.find(filter).populate(this._populateOnFind);
+  async find(filter?: any, limit?: number) {
+    let data: any;
+    if (limit) {
+      data = await this._repository.find(filter).populate(this._populateOnFind).limit(limit);
+    } else {
+      data = await this._repository.find(filter).populate(this._populateOnFind);
+    }
+
     return data.map((product: any) => product.toJSON());
   }
 
